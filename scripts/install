@@ -224,7 +224,7 @@ pushd $final_path/$app
     su "$app" -s $SHELL -lc "$final_path/$app/bin/pleroma_ctl migrate"
 
     ynh_systemd_action --service_name=$app --action="start" --log_path=systemd --line_match="Started $app"
-    sleep 60
+    sleep 180
 
     # Add user
     su "$app" -s $SHELL -lc "$final_path/$app/bin/pleroma_ctl user new $admin $admin_email --password $password --moderator --admin -y"
